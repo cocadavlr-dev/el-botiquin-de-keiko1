@@ -31,13 +31,17 @@ function step(delta) {
   page = (page + delta + total) % total;
   moveCarousel();
 }
-document.querySelector('.prev').addEventListener('click', () => track.classList.toggle('reverse'));
-document.querySelector('.next').addEventListener('click', () => track.classList.toggle('paused'));
+document.querySelector('.prev').addEventListener('click', () => {
+  if (!moveMobileRail(track, 'problem', PROBLEMS.length, -1)) track.classList.toggle('reverse');
+});
+document.querySelector('.next').addEventListener('click', () => {
+  if (!moveMobileRail(track, 'problem', PROBLEMS.length, 1)) track.classList.toggle('paused');
+});
 dots.addEventListener('click', (event) => { if (event.target.dataset.page) { page = Number(event.target.dataset.page); moveCarousel(); } });
-window.addEventListener('keydown', (event) => { if (event.key === 'ArrowLeft') step(-1); if (event.key === 'ArrowRight') step(1); });
+window.addEventListener('keydown', (event) => { if (event.key === 'ArrowLeft') moveMobileRail(track, 'problem', PROBLEMS.length, -1) || step(-1); if (event.key === 'ArrowRight') moveMobileRail(track, 'problem', PROBLEMS.length, 1) || step(1); });
 let touchStart = 0;
 track.addEventListener('touchstart', (event) => { touchStart = event.touches[0].clientX; }, { passive: true });
-track.addEventListener('touchend', (event) => { const distance = event.changedTouches[0].clientX - touchStart; if (Math.abs(distance) > 45) step(distance < 0 ? 1 : -1); }, { passive: true });
+track.addEventListener('touchend', (event) => { const distance = event.changedTouches[0].clientX - touchStart; if (Math.abs(distance) > 45) { const direction = distance < 0 ? 1 : -1; if (!moveMobileRail(track, 'problem', PROBLEMS.length, direction)) step(direction); } }, { passive: true });
 refreshCarousel();
 
 // A continuous conveyor for the 15 diagnosis cards, with an identical second run for a seamless loop.
@@ -47,7 +51,7 @@ problemsStyles.href = 'problems-marquee.css?v=1';
 document.head.append(problemsStyles);
 const mobileFixes = document.createElement('link');
 mobileFixes.rel = 'stylesheet';
-mobileFixes.href = 'mobile-fixes.css?v=4';
+mobileFixes.href = 'mobile-fixes.css?v=5';
 document.head.append(mobileFixes);
 const carouselPolish = document.createElement('link');
 carouselPolish.rel = 'stylesheet';
@@ -77,6 +81,48 @@ community.innerHTML = `<div class="shell"><div class="section-center"><p class="
 const testimonialTrack = community.querySelector('.testimonial-track');
 community.querySelector('.testimonial-prev').addEventListener('click', () => testimonialTrack.classList.toggle('reverse'));
 community.querySelector('.testimonial-next').addEventListener('click', () => testimonialTrack.classList.toggle('paused'));
+
+// Phones use a calm, reliable auto-advance rather than the desktop conveyor.
+// This prevents half cards, flicker and empty frames on Safari/iOS.
+const narrowRail = window.matchMedia('(max-width: 680px)');
+const railState = { problem: 0, testimonial: 0, problemTimer: null, testimonialTimer: null };
+
+function railStepSize(rail) {
+  const first = rail.firstElementChild;
+  const gap = Number.parseFloat(getComputedStyle(rail).gap) || 0;
+  return first ? first.getBoundingClientRect().width + gap : 0;
+}
+
+function moveMobileRail(rail, name, total, delta) {
+  if (!narrowRail.matches || !rail) return false;
+  railState[name] = (railState[name] + delta + total) % total;
+  rail.style.transform = `translate3d(-${railState[name] * railStepSize(rail)}px,0,0)`;
+  return true;
+}
+
+function configureMobileRails() {
+  clearInterval(railState.problemTimer);
+  clearInterval(railState.testimonialTimer);
+  railState.problemTimer = null;
+  railState.testimonialTimer = null;
+  if (!narrowRail.matches) {
+    track.style.removeProperty('transform');
+    testimonialTrack.style.removeProperty('transform');
+    return;
+  }
+  railState.problem = 0;
+  railState.testimonial = 0;
+  track.style.transform = 'translate3d(0,0,0)';
+  testimonialTrack.style.transform = 'translate3d(0,0,0)';
+  railState.problemTimer = setInterval(() => moveMobileRail(track, 'problem', PROBLEMS.length, 1), 6500);
+  railState.testimonialTimer = setInterval(() => moveMobileRail(testimonialTrack, 'testimonial', testimonials.length, 1), 7500);
+}
+
+community.querySelector('.testimonial-prev').addEventListener('click', () => moveMobileRail(testimonialTrack, 'testimonial', testimonials.length, -1));
+community.querySelector('.testimonial-next').addEventListener('click', () => moveMobileRail(testimonialTrack, 'testimonial', testimonials.length, 1));
+narrowRail.addEventListener('change', configureMobileRails);
+window.addEventListener('load', configureMobileRails, { once: true });
+configureMobileRails();
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 const header = document.querySelector('.header');

@@ -33,4 +33,13 @@ html,body{max-width:100%;overflow-x:hidden}.hero .reveal{opacity:1!important;tra
   .offer{padding:50px 0}.offer-layout{gap:0}.offer-mockup{height:250px;transform:scale(.68);transform-origin:center top;margin-bottom:-10px}.offer h2{font-size:39px}.offer-copy>p:not(.eyebrow){font-size:17px;line-height:1.3}.offer-meta{font-size:10px;margin-top:16px}
   .faq{padding:52px 0;gap:18px}.faq-intro>p:not(.eyebrow){font-size:17px;line-height:1.3}.faq-list{margin-top:4px}details{padding:15px 2px}summary{font-size:13px}details p{font-size:12px}
   .final-cta{padding:50px 0}.final-layout{gap:4px}.final-mockup{height:220px;transform:scale(.68);transform-origin:center top;margin-bottom:-18px}.final-cta h2{font-size:38px}.footer-row{font-size:11px;padding:0 2px}
+
+  /* iOS: one full card at a time, never a clipped moving strip. */
+  .problems-section .problem-track,.testimonials .testimonial-track{animation:none!important;transition:transform .58s ease!important;will-change:transform}
+  .problem-window,.testimonial-window{padding:0!important}
+  .problems-section .problem-card,.testimonials .testimonial-card{flex:0 0 calc(100vw - 64px)!important}
+  .testimonial-copy{min-height:218px}.testimonial-copy blockquote{font-size:16px;line-height:1.24}
+  .method-cards article{padding-top:18px}.method-cards article span{top:12px;left:18px;font-size:11px}.method-cards h3{padding-top:15px}
+  .hero-price,.offer-price,.final-price{display:grid!important;grid-template-columns:max-content max-content;align-items:baseline;column-gap:8px}
+  .hero-price small,.offer-price small{grid-column:1/-1}.final-price{margin-bottom:18px!important}
 }
