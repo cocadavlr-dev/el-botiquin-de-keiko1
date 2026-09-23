@@ -1,1 +1,36 @@
 html,body{max-width:100%;overflow-x:hidden}.hero .reveal{opacity:1!important;transform:none!important}.problems-section .problem-card{min-width:0!important}.testimonials .testimonial-card{min-width:0!important}@media(max-width:680px){.hero-book{right:auto!important;left:calc(50% - 136px)!important}.problem-window,.testimonial-window{overflow:hidden}.problem-card h3{overflow-wrap:anywhere}}
+
+/* Mobile is intentionally content-first: no section may depend on viewport animation to appear. */
+@media (max-width:1000px){.reveal,.reveal.visible{opacity:1!important;transform:none!important}.header-cta{display:none!important}}
+@media (max-width:680px){
+  .reveal,.reveal.visible{opacity:1!important;transform:none!important}
+  .header{background:linear-gradient(180deg,#08291fcc,transparent);height:62px}
+  .header .logo{font-size:12px;letter-spacing:.03em}.logo-mark{font-size:25px}
+  .menu-button{font-size:10px}.menu-button span{font-size:16px}
+  .hero,.offer,.final-cta{overflow:hidden}.hero{min-height:1035px}.hero-copy{padding-top:94px}
+  .hero h1{font-size:50px;line-height:.92}.hero-description{font-size:18px;line-height:1.28;margin:20px 0 22px}
+  .method-line{justify-content:space-between;gap:4px;margin:20px 0 25px}.method-line i{font-size:17px}
+  .method-line span{font-size:19px}.method-line b{font-size:9px}.method-line small{font-size:7px}
+  .hero .cta,.offer .cta,.final-cta .cta{min-height:54px;font-size:12px;letter-spacing:0}
+  .hero-price,.offer-price,.final-price{margin:16px 0!important}.hero-price strong,.offer-price strong,.final-price strong{font-size:40px!important}
+  .hero-mockups{height:430px;margin-top:8px;transform:scale(.70);transform-origin:50% 0}
+  .page-index{left:-46px;top:178px}.page-guide{right:-47px;top:183px}.hand-note{display:none}
+  .purchase-assurances{padding:17px 0!important}.purchase-assurances .benefit-grid{gap:0}
+  .purchase-assurances .benefit-grid>div{min-height:94px;padding:12px 11px!important;gap:8px;align-items:flex-start}
+  .purchase-assurances .benefit-grid b{width:28px;height:28px;flex-basis:28px;font-size:14px}
+  .purchase-assurances .benefit-grid strong{font-size:12px;line-height:1.12}.purchase-assurances .benefit-grid span{font-size:10px;line-height:1.22}
+  .keiko-story{margin-top:0;display:flex;flex-direction:column}.story-photo{min-height:285px}.story-copy{padding:35px 0 40px}
+  .story-copy h2,.contents h2,.section-center h2,.preview h2,.offer h2,.faq h2,.final-cta h2{font-size:38px;line-height:.96}
+  .story-copy>p:not(.eyebrow){font-size:17px;line-height:1.35}.story-copy aside{font-size:16px;padding:16px 18px;margin-top:22px}
+  .method-section{margin-top:0;padding:50px 0}.method-heading h2{font-size:41px}.method-heading p:not(.eyebrow){font-size:17px}
+  .method-cards{margin-top:25px;gap:12px}.method-cards article{min-height:124px;padding:18px 58px 18px 20px}.method-cards h3{font-size:17px;margin:4px 0}.method-cards p{font-size:13px}.method-cards i{right:18px;top:34px;font-size:37px}
+  .contents{padding:55px 0 42px;gap:25px}.contents-copy>p:not(.eyebrow){font-size:17px;line-height:1.3}.content-list>div{min-height:132px;padding:14px 8px}.content-list b{font-size:23px}.content-list strong{font-size:15px}.content-list span{font-size:10px}
+  .contents-mockup{height:295px}.contents-mockup .book{width:185px;right:34px}.inner-page{width:158px;right:-14px}
+  .problems-section{padding:52px 0 45px}.section-center{padding:0 2px}.section-center>p:not(.eyebrow){font-size:17px;line-height:1.3;margin:12px 0 26px}.carousel{gap:0}.carousel-control{position:absolute;z-index:4;top:42%;width:34px;height:34px;flex-basis:34px;font-size:20px}.carousel-control.prev{left:-8px}.carousel-control.next{right:-8px}
+  .problem-window{padding:0 18px}.problems-section .problem-card{flex-basis:calc(100vw - 68px)!important}.problem-card img{height:176px}.problem-card div{padding:13px 15px 16px}.problem-card h3{font-size:21px}.problem-card p{font-size:12px}.problem-card a{font-size:10px}
+  .preview{padding:55px 0;gap:20px}.preview-copy>p:not(.eyebrow){font-size:17px}.preview-pages{min-height:245px}.preview-pages img{width:34%;margin-left:-23px}
+  .testimonials{padding:52px 0 48px}.testimonials .section-center h2{font-size:36px}.testimonial-carousel{margin-top:28px;gap:0}.testimonial-controls{position:absolute;z-index:4;top:38%;width:34px!important;height:34px!important}.testimonial-prev{left:-8px}.testimonial-next{right:-8px}.testimonial-window{padding:0 18px}.testimonials .testimonial-card{flex-basis:calc(100vw - 68px)!important}.testimonial-photo{height:205px!important}.testimonial-copy{padding:17px 16px 18px}.testimonial-copy blockquote{font-size:17px;line-height:1.2}.testimonial-author{margin-top:14px}
+  .offer{padding:50px 0}.offer-layout{gap:0}.offer-mockup{height:250px;transform:scale(.68);transform-origin:center top;margin-bottom:-10px}.offer h2{font-size:39px}.offer-copy>p:not(.eyebrow){font-size:17px;line-height:1.3}.offer-meta{font-size:10px;margin-top:16px}
+  .faq{padding:52px 0;gap:18px}.faq-intro>p:not(.eyebrow){font-size:17px;line-height:1.3}.faq-list{margin-top:4px}details{padding:15px 2px}summary{font-size:13px}details p{font-size:12px}
+  .final-cta{padding:50px 0}.final-layout{gap:4px}.final-mockup{height:220px;transform:scale(.68);transform-origin:center top;margin-bottom:-18px}.final-cta h2{font-size:38px}.footer-row{font-size:11px;padding:0 2px}
+}

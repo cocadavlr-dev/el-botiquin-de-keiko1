@@ -47,7 +47,7 @@ problemsStyles.href = 'problems-marquee.css?v=1';
 document.head.append(problemsStyles);
 const mobileFixes = document.createElement('link');
 mobileFixes.rel = 'stylesheet';
-mobileFixes.href = 'mobile-fixes.css?v=1';
+mobileFixes.href = 'mobile-fixes.css?v=4';
 document.head.append(mobileFixes);
 const carouselPolish = document.createElement('link');
 carouselPolish.rel = 'stylesheet';
