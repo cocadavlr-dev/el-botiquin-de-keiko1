@@ -14,6 +14,7 @@ html,body{max-width:100%;overflow-x:hidden}.hero .reveal{opacity:1!important;tra
   .hero .cta,.offer .cta,.final-cta .cta{min-height:54px;font-size:12px;letter-spacing:0}
   .hero-price,.offer-price,.final-price{margin:16px 0!important}.hero-price strong,.offer-price strong,.final-price strong{font-size:40px!important}
   .hero-mockups{height:430px;margin-top:8px;transform:scale(.70);transform-origin:50% 0}
+  .hero-book{transform:rotate(0)!important;animation:none!important}
   .page-index{left:-46px;top:178px}.page-guide{right:-47px;top:183px}.hand-note{display:none}
   .purchase-assurances{padding:17px 0!important}.purchase-assurances .benefit-grid{gap:0}
   .purchase-assurances .benefit-grid>div{min-height:94px;padding:12px 11px!important;gap:8px;align-items:flex-start}
